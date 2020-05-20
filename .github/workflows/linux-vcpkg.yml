@@ -6,7 +6,13 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
-      - name: Test
+      - name: Restore Cache
+        uses: actions/cache@v1
+        with:
+          path: /usr/share/vcpkg/installed
+          key: ${{ runner.os }}-vcpkg
+      - name: Build Dependencies
         run: |
           vcpkg install openal-soft string-theory
           vcpkg integrate install
+          vcpkg list --x-full-desc
