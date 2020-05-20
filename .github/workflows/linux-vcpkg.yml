@@ -1,0 +1,12 @@
+name: Linux-vcpkg
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Test
+        run: |
+          vcpkg install openal-soft string-theory
+          vcpkg integrate install
