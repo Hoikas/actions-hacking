@@ -13,7 +13,8 @@ jobs:
           key: ${{ runner.os }}-vcpkg
       - name: Build Dependencies
         run: |
+          cd /usr/local/share/vcpkg
+          git pull
           vcpkg install openal-soft string-theory
           vcpkg integrate install
           vcpkg list --x-full-desc
-          ls --all -R /usr/local/share/vcpkg
