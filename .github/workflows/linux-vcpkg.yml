@@ -6,15 +6,22 @@ jobs:
     runs-on: ubuntu-latest
     
     steps:
+      - uses: actions/checkout@v2
+        
+      - name: Bootstrap vcpkg
+        run: |
+          cd /usr/local/share/vcpkg
+          git reset --hard && git pull
+          ./bootstrap-vcpkg.sh
+          
       - name: Restore Cache
         uses: actions/cache@v1
         with:
           path: /usr/local/share/vcpkg/installed
-          key: ${{ runner.os }}-vcpkg
+          key: ${{ runner.os }}-vcpkg=${{ hashFiles(/usr/local/share/vcpkg/vcpkg }} responsefile=${{ hashFiles(vcpkg.txt) }}
+
       - name: Build Dependencies
         run: |
-          cd /usr/local/share/vcpkg
-          git reset --hard && git pull
-          vcpkg install openal-soft string-theory
+          vcpkg install @vcpkg.txt
           vcpkg integrate install
           vcpkg list --x-full-desc
