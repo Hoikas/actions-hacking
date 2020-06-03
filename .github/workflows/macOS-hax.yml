@@ -1,0 +1,18 @@
+name: macOS CI Hacking
+on: [push]
+
+jobs:
+  build:
+    runs-on: macOS-latest
+    
+    steps:
+      - name: Checkout vcpkg
+        uses: actions/checkout@v2
+        with:
+          repository: microsoft/vcpkg
+      - name: Bootstrap vcpkg
+        run: |
+          ./bootstrap-vcpkg.sh
+      - name: Install Hyperscan
+        run: |
+          ./vcpkg install hyperscan
