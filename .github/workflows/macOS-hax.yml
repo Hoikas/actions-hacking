@@ -17,7 +17,6 @@ jobs:
         with:
           repository: Hoikas/vcpkg
           ref: ${{ matrix.commit }} 
-      - run: git log HEAD^..HEAD
       - name: Bootstrap vcpkg
         run: |
           ./bootstrap-vcpkg.sh
