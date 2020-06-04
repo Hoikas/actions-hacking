@@ -6,6 +6,7 @@ jobs:
     runs-on: macOS-latest
 
     strategy:
+      fail-fast: false
       matrix:
         package:
           - hyperscan
@@ -14,6 +15,12 @@ jobs:
           - sdformat9   
     
     steps:
+      - name: Prepare Environment
+        run: |
+          brew list autoconf || brew install autoconf
+          brew list automake || brew install automake
+          brew list libtool || brew install libtool
+          brew list pkg-config || brew install pkg-config
       - name: Checkout vcpkg
         uses: actions/checkout@v2
         with:
