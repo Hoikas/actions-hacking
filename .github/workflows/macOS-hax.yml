@@ -24,11 +24,11 @@ jobs:
       - name: Checkout vcpkg
         uses: actions/checkout@v2
         with:
-          repository: Hoikas/vcpkg
-          ref: py3.8
+          repository: Microsoft/vcpkg
+          ref: master
       - name: Bootstrap vcpkg
         run: |
           ./bootstrap-vcpkg.sh
-      - name: Install Hyperscan
+      - name: Install ${{ matrix.package }}
         run: |
           ./vcpkg install ${{ matrix.package }}
