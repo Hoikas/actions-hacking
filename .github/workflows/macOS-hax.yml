@@ -7,19 +7,21 @@ jobs:
 
     strategy:
       matrix:
-        commit:
-          - 63a7a3969609915f41532dd21a749f6d0372e8c3
-          - bcff1099c4e83f8eaf8b06b84a54fee325b53b27
+        package:
+          - hyperscan
+          - ignition-msgs5
+          - nettle
+          - sdformat9   
     
     steps:
       - name: Checkout vcpkg
         uses: actions/checkout@v2
         with:
           repository: Hoikas/vcpkg
-          ref: ${{ matrix.commit }} 
+          ref: py3.8
       - name: Bootstrap vcpkg
         run: |
           ./bootstrap-vcpkg.sh
       - name: Install Hyperscan
         run: |
-          ./vcpkg install hyperscan
+          ./vcpkg install ${{ matrix.package }}
