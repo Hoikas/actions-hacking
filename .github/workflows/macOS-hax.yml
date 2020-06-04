@@ -32,3 +32,9 @@ jobs:
       - name: Install ${{ matrix.package }}
         run: |
           ./vcpkg install ${{ matrix.package }}
+      - name: Upload Build Logs
+        if: ${{ failure() }}
+        uses: actions/upload-artifact@v2
+        with:
+          name: ${{ matrix.package }}-logs
+          path: buildtrees/**/*.txt
