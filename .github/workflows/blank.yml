@@ -1,0 +1,9 @@
+on: [push]
+name: LS Hosted Tools
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - run: ls -R /opt/hostedtoolcache
