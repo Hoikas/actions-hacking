@@ -9,10 +9,7 @@ jobs:
       fail-fast: false
       matrix:
         package:
-          - hyperscan
-          - ignition-msgs5
-          - nettle
-          - sdformat9   
+          - physx
     
     steps:
       - name: Prepare Environment
@@ -24,8 +21,8 @@ jobs:
       - name: Checkout vcpkg
         uses: actions/checkout@v2
         with:
-          repository: Microsoft/vcpkg
-          ref: master
+          repository: Hoikas/vcpkg
+          ref: physx
       - name: Bootstrap vcpkg
         run: |
           ./bootstrap-vcpkg.sh
