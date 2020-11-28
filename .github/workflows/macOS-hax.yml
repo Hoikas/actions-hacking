@@ -34,4 +34,4 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: ${{ matrix.package }}-logs
-          path: buildtrees/**/*.txt
+          path: buildtrees/**/*.log
