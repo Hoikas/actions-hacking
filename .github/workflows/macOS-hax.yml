@@ -9,7 +9,7 @@ jobs:
       fail-fast: false
       matrix:
         package:
-          - physx
+          - python
     
     steps:
       - name: Prepare Environment
@@ -22,7 +22,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: Hoikas/vcpkg
-          ref: physx
+          ref: py3_interpreter
       - name: Bootstrap vcpkg
         run: |
           ./bootstrap-vcpkg.sh
