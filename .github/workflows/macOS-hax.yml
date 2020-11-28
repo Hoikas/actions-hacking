@@ -9,7 +9,7 @@ jobs:
       fail-fast: false
       matrix:
         package:
-          - python
+          - python3
     
     steps:
       - name: Prepare Environment
